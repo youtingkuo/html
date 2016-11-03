@@ -1,4 +1,4 @@
-<html><head>
+ï»¿<html><head>
 <style>
 #info {
   position: absolute;
@@ -240,11 +240,11 @@ var Ball = function (scene){
   	this.mesh.position.add ( this.v.clone().multiplyScalar(dT) );
     
     this.netCollisionDetection();
-    if(this.mesh.position.y <= 0.2) referee.playing = false; //¹CÀ¸°±¤î
+    if(this.mesh.position.y <= 0.2) referee.playing = false; //éŠæˆ²åœæ­¢
   };
   
-  this.shoot = function(v) {//¶Ç¤Jvector3¡A·|±q²{¦bªºballªºmeshªº¦ì¸mµo®g
-		this.v = v;//ªì³t
+  this.shoot = function(v) {//å‚³å…¥vector3ï¼Œæœƒå¾ç¾åœ¨çš„ballçš„meshçš„ä½ç½®ç™¼å°„
+		this.v = v;//åˆé€Ÿ
   };
 
 };
@@ -418,33 +418,33 @@ var robot = function (scene, npc, num){
 var BUMP = Math.PI/3.49;
 var player = function(npc, num) {
 		
-    this.state = 0; //0:«İ¾÷  1:µo²y 2:standBy 3:°µ²y 4:normal§ğÀ» 5:±ş²y§ğÀ»
-    this.npc = npc; //1¡G¹q¸£, 2¡Gª±®a
-    this.num = num; //­I¸¹
+    this.state = 0; //0:å¾…æ©Ÿ  1:ç™¼çƒ 2:standBy 3:åšçƒ 4:normalæ”»æ“Š 5:æ®ºçƒæ”»æ“Š
+    this.npc = npc; //1ï¼šé›»è…¦, 2ï¼šç©å®¶
+    this.num = num; //èƒŒè™Ÿ
     this.standByPosition = new THREE.Vector3(0, 0, 0);
     this.chaseTarget = new THREE.Vector3(0, 0 ,0);
     this.hitMode = 0;
-    //µo²y¥Î
+    //ç™¼çƒç”¨
 		this.serveAngleLeft = 0;
 		this.serveAngleRight = 0;
 		this.startTime = 0;
 		this.serveIsOn = false;
-		this.serveState = 0;//0,¥ª¥k¤â©¹«á 1,¥k¤â©¹«e 2,¥´¨ì²y«á¨â¤â¦¬¦^
+		this.serveState = 0;//0,å·¦å³æ‰‹å¾€å¾Œ 1,å³æ‰‹å¾€å‰ 2,æ‰“åˆ°çƒå¾Œå…©æ‰‹æ”¶å›
     this.serveTarget;
     this.isLeft = false;
-    //update¥Î
+    //updateç”¨
     this.updateAngleLeft = BUMP;
     this.updateAngleRight = BUMP;
-    //¸õ¶V¥Î
+    //è·³è¶Šç”¨
     this.jumpIsOn = false;
 	this.jumpServeIsOn = false;
     this.jumpStartTime = 0;
-	this.jumpServeState = 0//0:©ß²y°Ê§@¡A1:©ß§¹²ystandBy¤£°Ê¡A2¸õ°_¨Ó¡A3¤â·Ç³Æ´§,4¤â´§¥X¡A²y®g¥X¥h¤F,¤â¥¿¦bÂk¦ì,5¤âÂk§¹¦ì¡A¨­Åé¥¿¦bÂk¦ì(µÛ¦a)
+	this.jumpServeState = 0//0:æ‹‹çƒå‹•ä½œï¼Œ1:æ‹‹å®ŒçƒstandByä¸å‹•ï¼Œ2è·³èµ·ä¾†ï¼Œ3æ‰‹æº–å‚™æ®,4æ‰‹æ®å‡ºï¼Œçƒå°„å‡ºå»äº†,æ‰‹æ­£åœ¨æ­¸ä½,5æ‰‹æ­¸å®Œä½ï¼Œèº«é«”æ­£åœ¨æ­¸ä½(è‘—åœ°)
   	this.jumpV = new THREE.Vector3(0, 0, 0);
-    this.jumpWaitTime = 0;//µ¥«İ®É¶¡¡Aµo²y¸ò±ş²y¦@¥Î
+    this.jumpWaitTime = 0;//ç­‰å¾…æ™‚é–“ï¼Œç™¼çƒè·Ÿæ®ºçƒå…±ç”¨
     this.jumpState = 0;
     
-    //ª±®a¾Ş±±ªº§ğÀ»ÂI
+    //ç©å®¶æ“æ§çš„æ”»æ“Šé»
     this.attackTarget = new THREE.Vector3(-4, 0, 0);
 	
 	
@@ -502,7 +502,7 @@ player.prototype.startJump = function(target,jumpV,waitTime){
 	this.jumpServeIsOn = true;
 	this.jumpIsOn = true;
 	this.jumpStartTime = clock.getElapsedTime();
-	this.jumpV = jumpV;//ªì³t
+	this.jumpV = jumpV;//åˆé€Ÿ
 	this.jumpWaitTime = waitTime;
 }
 player.prototype.serve = function(dT){
@@ -516,14 +516,14 @@ player.prototype.normalServe = function(){
     //console.log(this.state);
 		var now = clock.getElapsedTime();
       //console.log(this.serveState)
-    if(ball.isOn === false)//²y¸òµÛ¤â
-  		ball.mesh.position.copy(this.robot.handRight.localToWorld(new THREE.Vector3(0,0,0)));//NPCªº¸Ü¨ä¹ê¬O¥ª¤â
+    if(ball.isOn === false)//çƒè·Ÿè‘—æ‰‹
+  		ball.mesh.position.copy(this.robot.handRight.localToWorld(new THREE.Vector3(0,0,0)));//NPCçš„è©±å…¶å¯¦æ˜¯å·¦æ‰‹
 		
-		if(this.serveState == 0){//¦pªG²{¦b¤£¦bRest¤¤´N¥ÎBUMPª¬ºA¶}©l¥Î¥[ªº
+		if(this.serveState == 0){//å¦‚æœç¾åœ¨ä¸åœ¨Restä¸­å°±ç”¨BUMPç‹€æ…‹é–‹å§‹ç”¨åŠ çš„
 		 	this.serveAngleLeft = BUMP+ (now - this.startTime)*2 ;
 		 	this.serveAngleRight = BUMP+ (now - this.startTime)*2*1.5;
 		}
-    else if(this.serveState == 1){//¨ìMath.PI·|°jÂà©Ò¥H±qMath.PI¶}©l´î
+    else if(this.serveState == 1){//åˆ°Math.PIæœƒè¿´è½‰æ‰€ä»¥å¾Math.PIé–‹å§‹æ¸›
     	this.serveAngleRight = Math.PI*1.3567- (now - this.startTime)*6;
     }
     else{
@@ -551,11 +551,11 @@ player.prototype.normalServe = function(){
       this.serveAngleRight = BUMP;
       this.serveState = 0;
       this.serveIsOn = false;
-      this.state = 2;///µo§¹²yÅÜ¦¨stand by
+      this.state = 2;///ç™¼å®Œçƒè®Šæˆstand by
       this.stateTarget = undefined;
     }
     if(this.isLeft === true){
-      this.robot.hitBallMachineHandLeft.rotation.x = -1*this.serveAngleRight;//-1¤Ï¹L¨Ó¡A¥ª¥k¤â¤]¬O
+      this.robot.hitBallMachineHandLeft.rotation.x = -1*this.serveAngleRight;//-1åéä¾†ï¼Œå·¦å³æ‰‹ä¹Ÿæ˜¯
       this.robot.hitBallMachineHandRight.rotation.x = -1*this.serveAngleLeft; 
     } 
     else{
@@ -564,12 +564,12 @@ player.prototype.normalServe = function(){
     }
 }
 
-player.prototype.jumpServe = function(dT){//dT¨ä¹ê¬O¶Çµ¹jump¥Îªº¡Aµo²y°Ê§@¬O¥ÎjumpStartTime
+player.prototype.jumpServe = function(dT){//dTå…¶å¯¦æ˜¯å‚³çµ¦jumpç”¨çš„ï¼Œç™¼çƒå‹•ä½œæ˜¯ç”¨jumpStartTime
 	if (this.jumpServeIsOn === false) return;
 	var now = clock.getElapsedTime();
 	//console.log(this.jumpServeState)
-    if(ball.isOn === false)//²y¸òµÛ¤â
-  		ball.mesh.position.copy(this.robot.handRight.localToWorld(new THREE.Vector3(0,0,0)));//NPCªº¸Ü¨ä¹ê¬O¥ª¤â
+    if(ball.isOn === false)//çƒè·Ÿè‘—æ‰‹
+  		ball.mesh.position.copy(this.robot.handRight.localToWorld(new THREE.Vector3(0,0,0)));//NPCçš„è©±å…¶å¯¦æ˜¯å·¦æ‰‹
 	if(this.jumpServeState == 0){
 		this.serveAngleLeft = BUMP+ (now - this.jumpStartTime)*2 ;
 		this.serveAngleRight = BUMP+ (now - this.jumpStartTime)*2*1.5;
@@ -619,11 +619,11 @@ player.prototype.jumpServe = function(dT){//dT¨ä¹ê¬O¶Çµ¹jump¥Îªº¡Aµo²y°Ê§@¬O¥Îju
     this.serveAngleRight = BUMP;
     this.jumpServeState = 0;
     this.jumpServeIsOn = false;
-    this.state = 2;///µo§¹²yÅÜ¦¨stand by
+    this.state = 2;///ç™¼å®Œçƒè®Šæˆstand by
     this.stateTarget = undefined;
   }
     if(this.isLeft === true){
-      this.robot.hitBallMachineHandLeft.rotation.x = -1*this.serveAngleRight;//-1¤Ï¹L¨Ó¡A¥ª¥k¤â¤]¬O
+      this.robot.hitBallMachineHandLeft.rotation.x = -1*this.serveAngleRight;//-1åéä¾†ï¼Œå·¦å³æ‰‹ä¹Ÿæ˜¯
       this.robot.hitBallMachineHandRight.rotation.x = -1*this.serveAngleLeft; 
     } 
     else{
@@ -657,7 +657,7 @@ player.prototype.jump = function(dT){
   } 
 }
 
-player.prototype.predict = function(end){//¶Ç¶i¹w´úÂIend
+player.prototype.predict = function(end){//å‚³é€²é æ¸¬é»end
 
 	
     end.y=ball.mesh.position.y;
@@ -668,15 +668,15 @@ player.prototype.predict = function(end){//¶Ç¶i¹w´úÂIend
  	scene.add(predictMesh);	
     */
 	var predictTargetPos = new THREE.Vector3(0, 0, 0);
-    predictTargetPos.copy(end); //¬°¤£§ïÅÜend­È¡A³oÃä½Æ»sµ¹¥t¥~¤@­Ó
-    var length = predictTargetPos.sub(ball.mesh.position).length(); //­pºâ¥Ø«e¦ì¸m¸ò¹w´úÂIªº¤ô¥­¶ZÂ÷
+    predictTargetPos.copy(end); //ç‚ºä¸æ”¹è®Šendå€¼ï¼Œé€™é‚Šè¤‡è£½çµ¦å¦å¤–ä¸€å€‹
+    var length = predictTargetPos.sub(ball.mesh.position).length(); //è¨ˆç®—ç›®å‰ä½ç½®è·Ÿé æ¸¬é»çš„æ°´å¹³è·é›¢
 		
     if(this.state===1 || this.state===5){
     	//console.log("check");
-      var v0 = 10; //³]©wªì³t¡A¨Ì¾Ú¤£¦P¶ZÂ÷µ¹¤£¦Pªì³t
-      var temp = length*9.8/(v0*v0); //ºâ¥Xsin-1¸Ì­±ªº³¡¤À
-      if(temp<1) var theta = 0.5*Math.asin(temp); //¦pªG¤p©ó1
-      else{//¤j©ó¤@¤£¯à©ñ¶iMath.asin¡A­«·s½Õv0¨ì­è¦n¨¬°÷ªº¼Æ¦r
+      var v0 = 10; //è¨­å®šåˆé€Ÿï¼Œä¾æ“šä¸åŒè·é›¢çµ¦ä¸åŒåˆé€Ÿ
+      var temp = length*9.8/(v0*v0); //ç®—å‡ºsin-1è£¡é¢çš„éƒ¨åˆ†
+      if(temp<1) var theta = 0.5*Math.asin(temp); //å¦‚æœå°æ–¼1
+      else{//å¤§æ–¼ä¸€ä¸èƒ½æ”¾é€²Math.asinï¼Œé‡æ–°èª¿v0åˆ°å‰›å¥½è¶³å¤ çš„æ•¸å­—
         v0 = Math.sqrt(v0*v0*(temp+0.00001));
         var theta = 0.5*Math.asin(length*9.8/(v0*v0));
       }
@@ -750,7 +750,7 @@ player.prototype.update = function(dT){
 	if(this.state === 0)return;
 	if(this.state === 1){
   	this.serve(dT);
-    return;//¥²­n¡A¤£µM·|³Q¤U­±ªº½Õ¾ã¤âÁu¬~±¼¾÷¾¹¤Hªº¤âªº¦ì¸m
+    return;//å¿…è¦ï¼Œä¸ç„¶æœƒè¢«ä¸‹é¢çš„èª¿æ•´æ‰‹è‡‚æ´—æ‰æ©Ÿå™¨äººçš„æ‰‹çš„ä½ç½®
   }
 
 	//if(this.state === 0 || this.state === 1) return;
@@ -775,14 +775,14 @@ player.prototype.update = function(dT){
     }
   }
   
-  else if(this.state === 3){ //°µ²y
-  	var n = rotation(new THREE.Vector3(0, 1, 0), this.board.mesh.rotation.z, 0); //ªO¤l(¤â)ªºªk½u¦V¶q
+  else if(this.state === 3){ //åšçƒ
+  	var n = rotation(new THREE.Vector3(0, 1, 0), this.board.mesh.rotation.z, 0); //æ¿å­(æ‰‹)çš„æ³•ç·šå‘é‡
 		var p0 = this.board.mesh.localToWorld(new THREE.Vector3(0, -0.1, 0)); 
-    // p0¬°ªO¤l(¤â)¤Wªº¤@ÂI
-    var distance = ball.mesh.position.clone().sub(this.board.mesh.localToWorld(new THREE.Vector3(0, 0.3, 0))).lengthSq(); //²y»PªO¤l(¤â)ªº¶ZÂ÷
+    // p0ç‚ºæ¿å­(æ‰‹)ä¸Šçš„ä¸€é»
+    var distance = ball.mesh.position.clone().sub(this.board.mesh.localToWorld(new THREE.Vector3(0, 0.3, 0))).lengthSq(); //çƒèˆ‡æ¿å­(æ‰‹)çš„è·é›¢
     
   	
-    if(distance < 3) { //²y¸òªO¤l(¤â)¶ZÂ÷¤p©ó3¡A¤â´N¶}©l©¹¤W´§
+    if(distance < 3) { //çƒè·Ÿæ¿å­(æ‰‹)è·é›¢å°æ–¼3ï¼Œæ‰‹å°±é–‹å§‹å¾€ä¸Šæ®
     	this.board.mesh.position.add(n.clone().multiplyScalar(dT*3));
     	this.updateAngleLeft += dT*3;
     	this.updateAngleRight +=  dT*3;
@@ -790,18 +790,18 @@ player.prototype.update = function(dT){
     }
     
     if (!ball.collisionDetection(ball.mesh.position, p0, n)){	
-    //²y¹B°Ê¨ì¸òªO¤l(¤â)¦P¥­­±
+    //çƒé‹å‹•åˆ°è·Ÿæ¿å­(æ‰‹)åŒå¹³é¢
     	var r = ball.mesh.position.clone().sub(p0);
       var r1 = r.clone().sub(n.clone().multiplyScalar(r.clone().dot(n))).lengthSq();
-      if (Math.abs(r1) <= 0.16) { //²y¦bªO¤l(¤â)ªº½d³ò¤º      	
+      if (Math.abs(r1) <= 0.16) { //çƒåœ¨æ¿å­(æ‰‹)çš„ç¯„åœå…§      	
       	if(this.isLeft) {
         	//this.passTarget(new THREE.Vector3(2, 0, 0));
-          var tmp = this.predict(new THREE.Vector3(-2, 0, 0)); //ºâ¥X¨ì(x, 0, z)ªº³t«×»P¨¤«×
+          var tmp = this.predict(new THREE.Vector3(-2, 0, 0)); //ç®—å‡ºåˆ°(x, 0, z)çš„é€Ÿåº¦èˆ‡è§’åº¦
   ball.shoot(rotation(new THREE.Vector3(tmp[0], 0, 0), tmp[1], tmp[2]));
         }
         else {
         	//this.passTarget(new THREE.Vector3(-2, 0, 0));
-          var tmp = this.predict(new THREE.Vector3(2, 0, 0)); //ºâ¥X¨ì(x, 0, z)ªº³t«×»P¨¤«×
+          var tmp = this.predict(new THREE.Vector3(2, 0, 0)); //ç®—å‡ºåˆ°(x, 0, z)çš„é€Ÿåº¦èˆ‡è§’åº¦
   ball.shoot(rotation(new THREE.Vector3(tmp[0], 0, 0), tmp[1], tmp[2]));
         }
         
@@ -809,7 +809,7 @@ player.prototype.update = function(dT){
       }
     }
     
-  	//°l¸¨ÂI
+  	//è¿½è½é»
   	this.board.target.copy(this.chaseTarget);
   	this.board.pos.copy(this.board.mesh.position);
 		this.board.step(dT);
@@ -820,23 +820,23 @@ player.prototype.update = function(dT){
   }
   
   else if(this.state === 4){ //normal attack
-  	var n = rotation(new THREE.Vector3(0, 1, 0), this.board.mesh.rotation.z, 0); //ªO¤l(¤â)ªºªk½u¦V¶q
+  	var n = rotation(new THREE.Vector3(0, 1, 0), this.board.mesh.rotation.z, 0); //æ¿å­(æ‰‹)çš„æ³•ç·šå‘é‡
 		var p0 = this.board.mesh.localToWorld(new THREE.Vector3(0, -0.1, 0)); 
-    // p0¬°ªO¤l(¤â)¤Wªº¤@ÂI
-    var distance = ball.mesh.position.clone().sub(this.board.mesh.localToWorld(new THREE.Vector3(0, 0.3, 0))).lengthSq(); //²y»PªO¤l(¤â)ªº¶ZÂ÷
+    // p0ç‚ºæ¿å­(æ‰‹)ä¸Šçš„ä¸€é»
+    var distance = ball.mesh.position.clone().sub(this.board.mesh.localToWorld(new THREE.Vector3(0, 0.3, 0))).lengthSq(); //çƒèˆ‡æ¿å­(æ‰‹)çš„è·é›¢
     
   	
-    if(distance < 3) { //²y¸òªO¤l(¤â)¶ZÂ÷¤p©ó3¡A¤â´N¶}©l©¹¤W´§
+    if(distance < 3) { //çƒè·Ÿæ¿å­(æ‰‹)è·é›¢å°æ–¼3ï¼Œæ‰‹å°±é–‹å§‹å¾€ä¸Šæ®
     	this.board.mesh.position.add(n.clone().multiplyScalar(dT*3));
     	this.updateAngleLeft += dT*3;
     	this.updateAngleRight +=  dT*3;
     
     }
     if (!ball.collisionDetection(ball.mesh.position, p0, n)){	
-    //²y¹B°Ê¨ì¸òªO¤l(¤â)¦P¥­­±
+    //çƒé‹å‹•åˆ°è·Ÿæ¿å­(æ‰‹)åŒå¹³é¢
     	var r = ball.mesh.position.clone().sub(p0);
       var r1 = r.clone().sub(n.clone().multiplyScalar(r.clone().dot(n))).lengthSq();
-      if (Math.abs(r1) <= 0.16) { //²y¦bªO¤l(¤â)ªº½d³ò¤º      	
+      if (Math.abs(r1) <= 0.16) { //çƒåœ¨æ¿å­(æ‰‹)çš„ç¯„åœå…§      	
       	var x = Math.random() * 6+1.5;
         //var x = 6;
         var z = Math.random() * 7 - 3.5;
@@ -849,7 +849,7 @@ player.prototype.update = function(dT){
       }
     }
     
-    //°l¸¨ÂI
+    //è¿½è½é»
 	this.board.target.copy(this.chaseTarget);
 	this.board.pos.copy(this.board.mesh.position);
 		this.board.step(dT);
@@ -859,7 +859,7 @@ player.prototype.update = function(dT){
 	else var frontOrBack = 0.8;	this.robot.hitBallMachine.position.set(this.board.mesh.position.x+frontOrBack, 0.4, this.board.mesh.position.z);
   }
   
-  else if(this.state === 5){ //±ş²y
+  else if(this.state === 5){ //æ®ºçƒ
 	
 	
 	this.jumpWaitTime -=dT;
@@ -908,7 +908,7 @@ player.prototype.update = function(dT){
 	else
 		console.log("check wait");
 	
-	//°l¸¨ÂI
+	//è¿½è½é»
 	this.board.target.copy(this.chaseTarget);
 	this.board.pos.copy(this.board.mesh.position);
 		this.board.step(dT);
@@ -924,10 +924,10 @@ player.prototype.update = function(dT){
 	
 	
   }
-  //¹ê»Ú§ïrobotªº¼Æ­È
+  //å¯¦éš›æ”¹robotçš„æ•¸å€¼
   
   if(this.isLeft === true){
-    this.robot.hitBallMachineHandLeft.rotation.x = -1*this.updateAngleRight;//-1¤Ï¹L¨Ó¡A¥ª¥k¤â¤]¬O
+    this.robot.hitBallMachineHandLeft.rotation.x = -1*this.updateAngleRight;//-1åéä¾†ï¼Œå·¦å³æ‰‹ä¹Ÿæ˜¯
     this.robot.hitBallMachineHandRight.rotation.x = -1*this.updateAngleLeft; 
     
   } 
@@ -940,11 +940,11 @@ player.prototype.update = function(dT){
 
 
 player.prototype.passTarget = function(end){
-  var tmp = this.predict(end); //ºâ¥X¨ì(x, 0, z)ªº³t«×»P¨¤«×
-  ball.shoot(rotation(new THREE.Vector3(tmp[0], 0, 0), tmp[1], tmp[2])); //±N²y®g¥X¥h
-  var bumpTarget = this.predictY(tmp[0], tmp[1], tmp[2], 1.1); //ºâ¥X²y¹B°Ê¨ìy=1.1®Éªº¦ì¸m
+  var tmp = this.predict(end); //ç®—å‡ºåˆ°(x, 0, z)çš„é€Ÿåº¦èˆ‡è§’åº¦
+  ball.shoot(rotation(new THREE.Vector3(tmp[0], 0, 0), tmp[1], tmp[2])); //å°‡çƒå°„å‡ºå»
+  var bumpTarget = this.predictY(tmp[0], tmp[1], tmp[2], 1.1); //ç®—å‡ºçƒé‹å‹•åˆ°y=1.1æ™‚çš„ä½ç½®
   var jumpTarget = this.predictY(tmp[0], tmp[1], tmp[2], 3.7);
-  //±Ny=1.1®Éªº¦ì¸m¶Çµ¹¹ï³õªºcoach
+  //å°‡y=1.1æ™‚çš„ä½ç½®å‚³çµ¦å°å ´çš„coach
   if(this.isLeft) {
   	playerCoach.isOn = true;
   	playerCoach.bumpTarget = bumpTarget[0];
@@ -962,13 +962,13 @@ player.prototype.passTarget = function(end){
 
 ///////////////////////////////////////////////////////////////////////////
 var referee = function() {
-	//­Y±µµo²y¤èÄ¹±o¤@²y¡A°£¤F±o¤@¤À¤§¥~¡A¨Ã¨ú±oµo²yÅv¡C¦Ó¥u­nµo²yÅv¥æ´«¡AÀò±oµo²yÅv²y¶¤²y­û¤]¥²¶·½ü´À¡C
+	//è‹¥æ¥ç™¼çƒæ–¹è´å¾—ä¸€çƒï¼Œé™¤äº†å¾—ä¸€åˆ†ä¹‹å¤–ï¼Œä¸¦å–å¾—ç™¼çƒæ¬Šã€‚è€Œåªè¦ç™¼çƒæ¬Šäº¤æ›ï¼Œç²å¾—ç™¼çƒæ¬ŠçƒéšŠçƒå“¡ä¹Ÿå¿…é ˆè¼ªæ›¿ã€‚
   this.playing = false;
   
 }
 
 referee.prototype.update = function() {
-	if(!this.playing) { //¹CÀ¸°±¤î¡A©Ò¦³player«İ¾÷
+	if(!this.playing) { //éŠæˆ²åœæ­¢ï¼Œæ‰€æœ‰playerå¾…æ©Ÿ
   	npcPlayer1.state = 0;
     npcPlayer2.state = 0;
     player1.state = 0;
@@ -1001,7 +1001,7 @@ coach.prototype.update = function() {
     //if(dis1 >= dis2) {
     	//npcPlayer2.state = 4; 
 		
-    	npcPlayer2.state = 5; //±ş²y
+    	npcPlayer2.state = 5; //æ®ºçƒ
       //npcPlayer2.chaseTarget = this.bumpTarget;
 	  
 	  
@@ -1010,13 +1010,13 @@ coach.prototype.update = function() {
 	  npcPlayer2.jumpWaitTime = this.jumpTime;
 	  npcPlayer2.jumpV = new THREE.Vector3(0, 5, 0);
 	  npcPlayer2.jumpIsOn = true;
-	  //³oÃä­n¤@­Óif¨Ó§PÂ_§ğÀ»¤è¦¡?
+	  //é€™é‚Šè¦ä¸€å€‹ifä¾†åˆ¤æ–·æ”»æ“Šæ–¹å¼?
 /*	var predictMesh = new THREE.Mesh(new THREE.SphereGeometry(0.2, 32, 32), new THREE.MeshBasicMaterial({transparent: true, 
 						 side:THREE.DoubleSide}));
 	predictMesh.position.copy(npcPlayer2.chaseTarget);
 	scene.add(predictMesh);	*/
 	  	  
-	  //npcPlayer1.state = 4; //§ğÀ»
+	  //npcPlayer1.state = 4; //æ”»æ“Š
       //npcPlayer1.chaseTarget = new THREE.Vector3(-2, 1.1, 0);
       npcPlayer1.state = 2; 
       //npcPlayer1.chaseTarget = new THREE.Vector3(-2, 1.1, 0);
@@ -1024,9 +1024,9 @@ coach.prototype.update = function() {
 	  
     //}
     /*else {
-    	npcPlayer1.state = 3; //°µ²y
+    	npcPlayer1.state = 3; //åšçƒ
       npcPlayer1.chaseTarget = this.bumpTarget;
-      npcPlayer2.state = 4; //§ğÀ»
+      npcPlayer2.state = 4; //æ”»æ“Š
       npcPlayer2.chaseTarget = new THREE.Vector3(-2, 1.1, 0);
     }*/
     //pcPlayer1.state = 4;
@@ -1041,54 +1041,54 @@ coach.prototype.update = function() {
     
     if(dis1 >= dis2) {
     	if(pass) {
-    		player2.state = 3; //°µ²y
+    		player2.state = 3; //åšçƒ
       	player2.chaseTarget = this.bumpTarget;
         if(spike) {
-        	player1.state = 5; //±ş²y
+        	player1.state = 5; //æ®ºçƒ
       		player1.chaseTarget = this.jumpTarget;
 	  			player1.jumpWaitTime = this.jumpTime;
 	  			player1.jumpV = new THREE.Vector3(0, 5, 0);
 	  			player1.jumpIsOn = true;
         }
-        else player1.state = 4; //§ğÀ»
+        else player1.state = 4; //æ”»æ“Š
       	player1.chaseTarget = new THREE.Vector3(2, 1.1, 0);
       }
       else {
       	if(spike) {
-        	player2.state = 5; //±ş²y
+        	player2.state = 5; //æ®ºçƒ
       		player2.chaseTarget = this.jumpTarget;
 	  			player2.jumpWaitTime = this.jumpTime;
 	  			player2.jumpV = new THREE.Vector3(0, 5, 0);
 	  			player2.jumpIsOn = true;
         }
-        else player2.state = 4; //§ğÀ»
+        else player2.state = 4; //æ”»æ“Š
       	player2.chaseTarget = this.bumpTarget;
         player1.state = 2; //stand by
       }
     }
     else {
     	if(pass) {
-    		player1.state = 3; //°µ²y
+    		player1.state = 3; //åšçƒ
       	player1.chaseTarget = this.bumpTarget;
         if(spike) {
-        	player2.state = 5; //±ş²y
+        	player2.state = 5; //æ®ºçƒ
       		player2.chaseTarget = this.jumpTarget;
 	  			player2.jumpWaitTime = this.jumpTime;
 	  			player2.jumpV = new THREE.Vector3(0, 5, 0);
 	  			player2.jumpIsOn = true;
         }
-        else player2.state = 4; //§ğÀ»
+        else player2.state = 4; //æ”»æ“Š
         player2.chaseTarget = new THREE.Vector3(2, 1.1, 0);
       }
       else {
       	if(spike) {
-        	player1.state = 5; //±ş²y
+        	player1.state = 5; //æ®ºçƒ
       		player1.chaseTarget = this.jumpTarget;
 	  			player1.jumpWaitTime = this.jumpTime;
 	  			player1.jumpV = new THREE.Vector3(0, 5, 0);
 	  			player1.jumpIsOn = true;
         }
-        else player1.state = 4; //§ğÀ»
+        else player1.state = 4; //æ”»æ“Š
       	player1.chaseTarget = this.bumpTarget;
         player2.state = 2; //stand by
       }
@@ -1215,7 +1215,7 @@ function init() {
   //camera.position.set(0, 6, 15);
   controls = new THREE.OrbitControls(camera, renderer.domElement);
   
-  //§ğÀ»½d³ò
+  //æ”»æ“Šç¯„åœ
   var attackRangeGeometry = new THREE.Geometry();  
   attackRangeGeometry.vertices.push(new THREE.Vector3(-8, 0.1, -2));
   attackRangeGeometry.vertices.push(new THREE.Vector3(-8, 0.1, 2));
@@ -1253,7 +1253,7 @@ function init() {
  player2.robot.hitBallMachine.position.set(player2.board.mesh.position.x+0.8, 0.4, player2.board.mesh.position.z);
  	player2.standByPosition = new THREE.Vector3(4, 1.1, 2);
  
- //¥H¤Upredictmesh¬O®³¨ÓÆ[¹î¥Î¡A¨S¯S§O¥\¯à
+ //ä»¥ä¸‹predictmeshæ˜¯æ‹¿ä¾†è§€å¯Ÿç”¨ï¼Œæ²’ç‰¹åˆ¥åŠŸèƒ½
  /*predictMesh = new THREE.Mesh(new THREE.SphereGeometry(0.2, 32, 32), new THREE.MeshBasicMaterial({transparent: true, 
                          side:THREE.DoubleSide}));
   //predictMesh.position.set(4, 2.51, 1);
@@ -1293,10 +1293,10 @@ function animate() {
   player1.update(dT);
   player2.update(dT);
   
-  //test jump¥Î¡A¤§«á©ñ¶i¥hupdate?
+  //test jumpç”¨ï¼Œä¹‹å¾Œæ”¾é€²å»update?
   npcPlayer1.jumpServe(dT);
   /*
-  //Áä½L¾Ş§@
+  //éµç›¤æ“ä½œ
   var x = -4;
   var z = 0;
   if (keyboard.pressed ('up')) {
@@ -1315,7 +1315,7 @@ function animate() {
   player2.attackTarget = new THREE.Vector3(x, 0, z);
   */
 
-	//ÀH¾÷§ğÀ»ÂI
+	//éš¨æ©Ÿæ”»æ“Šé»
   if(attackPosRange === 0) var z = 2;
   else if(attackPosRange === 1) var z = 0;
   else if(attackPosRange ===2) var z = -2;
@@ -1324,42 +1324,42 @@ function animate() {
   player1.attackTarget = new THREE.Vector3(x, 0, z);
   player2.attackTarget = new THREE.Vector3(x, 0, z);
   
-  //ª¬ºAÅã¥Ü
-  if(npcPlayer1.state === 0) npcPlayer1Show.innerHTML = "npcPlayer1 : «İ¾÷";
-  else if(npcPlayer1.state === 1) npcPlayer1Show.innerHTML = "npcPlayer1 : µo²y";
+  //ç‹€æ…‹é¡¯ç¤º
+  if(npcPlayer1.state === 0) npcPlayer1Show.innerHTML = "npcPlayer1 : å¾…æ©Ÿ";
+  else if(npcPlayer1.state === 1) npcPlayer1Show.innerHTML = "npcPlayer1 : ç™¼çƒ";
   else if(npcPlayer1.state === 2) npcPlayer1Show.innerHTML = "npcPlayer1 : stand by";
-  else if(npcPlayer1.state === 3) npcPlayer1Show.innerHTML = "npcPlayer1 : °µ²y";
-  else if(npcPlayer1.state === 4) npcPlayer1Show.innerHTML = "npcPlayer1 : §ğÀ»";
-  else if(npcPlayer1.state === 5) npcPlayer1Show.innerHTML = "npcPlayer1 : ±ş²y";
+  else if(npcPlayer1.state === 3) npcPlayer1Show.innerHTML = "npcPlayer1 : åšçƒ";
+  else if(npcPlayer1.state === 4) npcPlayer1Show.innerHTML = "npcPlayer1 : æ”»æ“Š";
+  else if(npcPlayer1.state === 5) npcPlayer1Show.innerHTML = "npcPlayer1 : æ®ºçƒ";
   
-  if(npcPlayer2.state === 0) npcPlayer2Show.innerHTML = "npcPlayer2 : «İ¾÷";
-  else if(npcPlayer2.state === 1) npcPlayer2Show.innerHTML = "npcPlayer2 : µo²y";
+  if(npcPlayer2.state === 0) npcPlayer2Show.innerHTML = "npcPlayer2 : å¾…æ©Ÿ";
+  else if(npcPlayer2.state === 1) npcPlayer2Show.innerHTML = "npcPlayer2 : ç™¼çƒ";
   else if(npcPlayer2.state === 2) npcPlayer2Show.innerHTML = "npcPlayer2 : stand by";
-  else if(npcPlayer2.state === 3) npcPlayer2Show.innerHTML = "npcPlayer2 : °µ²y";
-  else if(npcPlayer2.state === 4) npcPlayer2Show.innerHTML = "npcPlayer2 : §ğÀ»";
-  else if(npcPlayer2.state === 5) npcPlayer2Show.innerHTML = "npcPlayer2 : ±ş²y";
+  else if(npcPlayer2.state === 3) npcPlayer2Show.innerHTML = "npcPlayer2 : åšçƒ";
+  else if(npcPlayer2.state === 4) npcPlayer2Show.innerHTML = "npcPlayer2 : æ”»æ“Š";
+  else if(npcPlayer2.state === 5) npcPlayer2Show.innerHTML = "npcPlayer2 : æ®ºçƒ";
   
-  if(player1.state === 0) player1Show.innerHTML = "player1 : «İ¾÷";
-  else if(player1.state === 1) player1Show.innerHTML = "player1 : µo²y";
+  if(player1.state === 0) player1Show.innerHTML = "player1 : å¾…æ©Ÿ";
+  else if(player1.state === 1) player1Show.innerHTML = "player1 : ç™¼çƒ";
   else if(player1.state === 2) player1Show.innerHTML = "player1 : stand by";
-  else if(player1.state === 3) player1Show.innerHTML = "player1 : °µ²y";
-  else if(player1.state === 4) player1Show.innerHTML = "player1 : §ğÀ»";
-  else if(player1.state === 5) player1Show.innerHTML = "player1 : ±ş²y";
+  else if(player1.state === 3) player1Show.innerHTML = "player1 : åšçƒ";
+  else if(player1.state === 4) player1Show.innerHTML = "player1 : æ”»æ“Š";
+  else if(player1.state === 5) player1Show.innerHTML = "player1 : æ®ºçƒ";
   
-  if(player2.state === 0) player2Show.innerHTML = "player2 : «İ¾÷";
-  else if(player2.state === 1) player2Show.innerHTML = "player2 : µo²y";
+  if(player2.state === 0) player2Show.innerHTML = "player2 : å¾…æ©Ÿ";
+  else if(player2.state === 1) player2Show.innerHTML = "player2 : ç™¼çƒ";
   else if(player2.state === 2) player2Show.innerHTML = "player2 : stand by";
-  else if(player2.state === 3) player2Show.innerHTML = "player2 : °µ²y";
-  else if(player2.state === 4) player2Show.innerHTML = "player2 : §ğÀ»";
-  else if(player2.state === 5) player2Show.innerHTML = "player2 : ±ş²y";
+  else if(player2.state === 3) player2Show.innerHTML = "player2 : åšçƒ";
+  else if(player2.state === 4) player2Show.innerHTML = "player2 : æ”»æ“Š";
+  else if(player2.state === 5) player2Show.innerHTML = "player2 : æ®ºçƒ";
   
   if(attackPosRange === 0) attackRange.innerHTML = "Left";
   else if(attackPosRange === 1) attackRange.innerHTML = "Middle";
   else if(attackPosRange === 2) attackRange.innerHTML = "Right";
-  if(pass) passState.innerHTML = "°µ²y";
-  else passState.innerHTML = "¤£°µ²y";
-  if(spike) spikeState.innerHTML = "±ş²y";
-  else spikeState.innerHTML = "¤£±ş²y";
+  if(pass) passState.innerHTML = "åšçƒ";
+  else passState.innerHTML = "ä¸åšçƒ";
+  if(spike) spikeState.innerHTML = "æ®ºçƒ";
+  else spikeState.innerHTML = "ä¸æ®ºçƒ";
   
   //player1.serve();
   //npcPlayer1.serve();
